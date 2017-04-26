@@ -5,6 +5,7 @@
 
   <div class="form-inputs">
     <%= f.input :zipcode, as: :zipcode %>
+    <small style="display: none;" id="error">Error - Invalid zipcode</small>
     <%= f.input :street, as: :street %>
     <%= f.input :neighborhood, as: :neighborhood %>
     <%= f.input :city, as: :city %>

@@ -43,6 +43,25 @@ Basic Example:
 
 If you are not using simple_form, then simply add the `data-provider="zipcode"` and the other fields name to the input field yourself.
 
+```erb
+<%= form_for :example do | f | %>
+  ...
+  <%= f.text_field :zipcode, data: {provider: :zipcode} %>
+  <%= f.text_field :street, data: {provider: :street}  %>
+  ...
+<% end %>
+```
+
+## Handle invalid zipcodes
+
+Simply add an event listener callback to `zipcode.error`, for example:
+
+```js
+document.addEventListener('zipcode.error', function(e) {
+  alert('Invalid zipcode!!!')
+});
+```
+
 ## Sample projects
 
 For an example, take a look at the `example` folder in this repository.

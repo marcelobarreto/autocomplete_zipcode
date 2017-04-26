@@ -15,3 +15,12 @@
 //= require turbolinks
 //= require autocomplete_zipcode
 //= require_tree .
+
+$(document).on("turbolinks:load", function() {
+  document.addEventListener('zipcode.error', function(e) {
+    $('#error').show()
+    setTimeout(function() {
+      $('#error').fadeOut(1000);
+    }, 5000);
+  });
+})
