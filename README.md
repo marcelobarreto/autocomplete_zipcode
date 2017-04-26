@@ -30,7 +30,7 @@ In app/assets/javascripts/application.js, you should add as follows:
 Basic Example:
 
 ```erb
-<%= simple_form_for :example do | f | %>
+<%= simple_form_for :example do |f| %>
   ...
   <%= f.input :zipcode, as: :zipcode %>
   <%= f.input :street, as: :street %>
@@ -44,7 +44,7 @@ Basic Example:
 If you are not using simple_form, then simply add the `data-provider="zipcode"` and the other fields name to the input field yourself.
 
 ```erb
-<%= form_for :example do | f | %>
+<%= form_for :example do |f| %>
   ...
   <%= f.text_field :zipcode, data: {provider: :zipcode} %>
   <%= f.text_field :street, data: {provider: :street}  %>
