@@ -1,11 +1,10 @@
 var ready = function() {
   zipcode_input = $('[data-provider="zipcode"]')
   zipcode_input.keyup(function(e){
-    var zipcode = $('[data-provider="zipcode"]').val().replace(/[^0-9]/g, '');
+    var zipcode = zipcode_input.val().replace(/[^0-9]/g, '');
     if(zipcode.length == 8) {
       $.get('http://viacep.com.br/ws/'+ zipcode +'/json/').then(function(response) {
         var inputs = {
-          // zipcode: 'cep',
           street: 'logradouro',
           neighborhood: 'bairro',
           city: 'localidade',
