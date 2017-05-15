@@ -2,6 +2,9 @@
 
 This gem was built to "automagically" fills an address form, for Rails version >= 3.1.
 
+## Try it
+
+[HerokuApp](http://autocompletezipcode.herokuapp.com)
 
 ## Installation
 
@@ -64,7 +67,8 @@ document.addEventListener('zipcode.error', function(e) {
 
 ## Sample projects
 
-For an example, take a look at the `example` folder in this repository.
+For an example, take a look at [this repository](https://github.com/marcelobarreto/autocomplete_zipcode_example).
+
 
 ## Contributing
 
