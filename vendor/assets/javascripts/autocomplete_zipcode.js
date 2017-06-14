@@ -3,7 +3,7 @@ var ready = function() {
   zipcode_input.keyup(function(e){
     var zipcode = zipcode_input.val().replace(/[^0-9]/g, '');
     if(zipcode.length == 8) {
-      $.get('http://viacep.com.br/ws/'+ zipcode +'/json/').then(function(response) {
+      $.get('https://viacep.com.br/ws/'+ zipcode +'/json/').then(function(response) {
         if (response.erro) {
           var event = new Event('zipcode.error');
 
