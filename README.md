@@ -26,8 +26,8 @@ In app/assets/javascripts/application.js, you should add as follows:
 
 ```js
 //= require ...
+//= require turbolinks
 //= require autocomplete_zipcode
-//= require ...
 ```
 
 Basic Example:
