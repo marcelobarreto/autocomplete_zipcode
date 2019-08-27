@@ -18,7 +18,8 @@ var ready = function() {
           street: 'logradouro',
           neighborhood: 'bairro',
           city: 'localidade',
-          state: 'uf'
+          state: 'uf',
+          ibge: 'ibge'
         }
 
         for(var key in inputs) {
