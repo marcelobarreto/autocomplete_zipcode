@@ -1,29 +1,29 @@
-var ready = function() {
-  zipcode_input = $('[data-provider="zipcode"]')
-  zipcode_input.keyup(function(e){
-    var zipcode = zipcode_input.val().replace(/[^0-9]/g, '');
-    if(zipcode.length == 8) {
-      $.get('https://viacep.com.br/ws/'+ zipcode +'/json/').then(function(response) {
+const inputs = {
+  street: 'logradouro',
+  neighborhood: 'bairro',
+  city: 'localidade',
+  state: 'uf',
+  ibge: 'ibge',
+};
+
+const ready = () => {
+  const zipCodeInput = $('[data-provider="zipcode"]');
+  zipCodeInput.keyup(() => {
+    const zipcode = zipCodeInput.val().replace(/[^0-9]/g, '');
+
+    if(zipcode.length === 8) {
+      $.get(`https://viacep.com.br/ws/${zipcode}/json`).then(response => {
+        let event;
         if (response.erro) {
-          var event = new Event('zipcode.error');
-
-          document.dispatchEvent(event);
+          event = new Event('zipcode.error');
         } else {
-          var event = new Event('zipcode.success');
-
-          document.dispatchEvent(event);
+          event = new Event('zipcode.success');
         }
 
-        var inputs = {
-          street: 'logradouro',
-          neighborhood: 'bairro',
-          city: 'localidade',
-          state: 'uf',
-          ibge: 'ibge'
-        }
+        document.dispatchEvent(event);
 
         for(var key in inputs) {
-          $('[data-provider="' + key + '"]').val(response[inputs[key]])
+          $(`[data-provider="'${key}'"]`).val(response[inputs[key]]);
         }
       });
     };
