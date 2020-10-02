@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Marcelo Barreto"]
   spec.email         = ["marcelobarretojunior@gmail.com"]
 
-  spec.summary       = %q{Fill in your brazilian addresses automagically}
+  spec.summary       = %q{Fill in your brazillian addresses automagically}
   spec.homepage      = "https://github.com/marcelobarreto/autocomplete_zipcode"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
@@ -19,5 +19,4 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 2.1"
   spec.add_development_dependency "rake", "~> 13.0"
-  #spec.add_runtime_dependency 'rails-assets-jquery'
 end
