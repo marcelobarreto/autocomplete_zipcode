@@ -19,10 +19,10 @@
 
 $(document).on('ready', () => {
   AutocompleteZipcode.mount({
-    onZipcodeSuccess: (containerEl, zipcodeEl) => {
+    onSuccess: (containerEl, zipcodeEl) => {
       console.log(containerEl, zipcodeEl);
     },
-    onZipcodeFail: (containerEl, zipcodeEl) => {
+    onFail: (containerEl, zipcodeEl) => {
       console.log(containerEl, zipcodeEl);
     },
   });

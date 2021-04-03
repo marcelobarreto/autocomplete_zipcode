@@ -11,7 +11,7 @@ const AutocompleteZipcode = {
     state: 'uf',
     ibge: 'ibge',
   },
-  mount: ({ onZipcodeSuccess, onZipcodeFail, config = AutocompleteZipcode.config }) => {
+  mount: ({ onSuccess, onFail, config = AutocompleteZipcode.config }) => {
     if (typeof jQuery === 'undefined') {
       console.error('jQuery is required by autocomplete_zipcode gem')
       return;
@@ -33,11 +33,11 @@ const AutocompleteZipcode = {
       if (zipcode.length === 8) {
         $.get(serviceUrl({ zipcode })).then(response => {
           if (response.erro) {
-            onZipcodeFail?.call(this, $container[0], $el[0]);
+            onFail?.call(this, $container[0], $el[0]);
             document.dispatchEvent(new Event('zipcode.error'));
           } else {
             for (var key in inputs) $container.find(`[${selectorPrefix}="${key}"]`).val(response[inputs[key]]);
-            onZipcodeSuccess?.call(this, $container[0], $el[0]);
+            onSuccess?.call(this, $container[0], $el[0]);
             document.dispatchEvent(new Event('zipcode.success'));
           }
         });
