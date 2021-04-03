@@ -49,8 +49,8 @@ If you are not using simple_form, then simply add the `data-provider="zipcode"` 
 ```erb
 <%= form_for :example do |f| %>
   ...
-  <%= f.text_field :zipcode, data: {autocomplete_zipcode_provider :zipcode} %>
-  <%= f.text_field :street, data: {autocomplete_zipcode_provider :street}  %>
+  <%= f.text_field :zipcode, data: {autocomplete_zipcode_provider: :zipcode} %>
+  <%= f.text_field :street, data: {autocomplete_zipcode_provider: :street}  %>
   ...
 <% end %>
 ```

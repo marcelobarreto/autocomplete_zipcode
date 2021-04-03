@@ -12,4 +12,8 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require jquery
+//= require autocomplete_zipcode
 //= require_tree .
+
+AutocompleteZipcode.mount();

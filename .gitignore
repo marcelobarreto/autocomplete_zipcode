@@ -6,3 +6,8 @@
 /pkg/
 /spec/reports/
 /tmp/
+
+spec/dummy/log/*.log
+spec/dummy/tmp
+spec/dummy/test
+spec/dummy/db/*.sqlite3
