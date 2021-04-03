@@ -2,11 +2,6 @@ AllCops:
   SuggestExtensions: false
   Exclude:
     - 'spec/**/*.rb'
+    - 'spec/dummy/**/*'
 Style/Documentation:
-  Enabled: false
-Style/HashEachMethods:
-  Enabled: false
-Lint/MissingSuper:
-  Enabled: false
-Lint/UriEscapeUnescap:
   Enabled: false

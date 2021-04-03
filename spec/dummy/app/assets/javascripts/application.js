@@ -16,4 +16,17 @@
 //= require autocomplete_zipcode
 //= require_tree .
 
-AutocompleteZipcode.mount();
+
+$(document).on('ready', () => {
+  AutocompleteZipcode.mount();
+
+  document.addEventListener('zipcode.success', (e) => {
+    console.log(e);
+    console.log('zipcode was fetched successfully');
+  });
+
+  document.addEventListener('zipcode.error', (e) => {
+    console.log(e);
+    console.log('zipcode was fetch failed');
+  });
+});

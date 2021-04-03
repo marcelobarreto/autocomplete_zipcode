@@ -1,17 +1,38 @@
+<div style="display: flex;">
 
-<%= simple_form_for(@address, html: { autocomplete: :off }) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= simple_form_for(@address, html: { id: :form1, autocomplete: :off, autocorrect: :off }) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :zipcode, as: :zipcode %>
-    <%= f.input :street, as: :street %>
-    <%= f.input :neighborhood, as: :neighborhood %>
-    <%= f.input :city, as: :city %>
-    <%= f.input :state, as: :state %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :zipcode, as: :zipcode, input_html: { autocomplete: :off, autocorrect: :off } %>
+      <%= f.input :street, as: :street %>
+      <%= f.input :neighborhood, as: :neighborhood %>
+      <%= f.input :city, as: :city %>
+      <%= f.input :state, as: :state %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+
+
+  <%= simple_form_for(@address, html: { id: :form2, autocomplete: :off, autocorrect: :off }) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <div class="form-inputs">
+      <%= f.input :zipcode, as: :zipcode, input_html: { autocomplete: :off, autocorrect: :off } %>
+      <%= f.input :street, as: :street %>
+      <%= f.input :neighborhood, as: :neighborhood %>
+      <%= f.input :city, as: :city %>
+      <%= f.input :state, as: :state %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>
+

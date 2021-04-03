@@ -3,6 +3,7 @@ const AutocompleteZipcode = {
     container: 'form',
     stateType: 'select',
     selectorPrefix: 'data-autocomplete-zipcode-provider',
+    serviceUrl: ({ zipcode }) => `https://viacep.com.br/ws/${zipcode}/json`,
   },
   inputs: {
     street: 'logradouro',
@@ -12,32 +13,36 @@ const AutocompleteZipcode = {
     ibge: 'ibge',
   },
   mount: (config = AutocompleteZipcode.config) => {
-    const { inputs } = AutocompleteZipcode.inputs;
-    const { container, stateType, selectorPrefix } = config;
+    if (typeof jQuery === 'undefined') {
+      console.error('jQuery is required by autocomplete_zipcode gem')
+      return;
+    }
+    const { inputs } = AutocompleteZipcode;
+    const { container, stateType, selectorPrefix, serviceUrl } = config;
 
-    const $container = $(container);
-    console.log($container);
-    console.log(`[${selectorPrefix}="zipcode"]`);
-    const observable = $container.find(`[${selectorPrefix}="zipcode"]`);
-    console.log(observable);
+    const observable = $(container).find(`[${selectorPrefix}="zipcode"]`);
 
-    observable.keyup(() => {
-      const zipcode = observable.val().replace(/[^0-9]/g, '');
+    observable.keyup((e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const { target: { value } } = e;
+      const $el = $(e.target);
+      const $container = $el.parents().closest($(container));
+      const zipcode = value.replace(/[^0-9]/g, '');
 
       if(zipcode.length === 8) {
-        $.get(`https://viacep.com.br/ws/${zipcode}/json`).then(response => {
+        $.get(serviceUrl({ zipcode })).then(response => {
           if (response.erro) {
-            document.dispatchEvent(new Event('zipcode.error'))
+            document.dispatchEvent(new Event('zipcode.error'));
+            return;
           } else {
-            document.dispatchEvent(new Event('zipcode.success'))
-          }
-
-          console.log(response);
-          for(var key in inputs) {
-            $container.find(`[${selectorPrefix}="'${key}'"]`).val(response[inputs[key]]);
+            for (var key in inputs) $container.find(`[${selectorPrefix}="${key}"]`).val(response[inputs[key]]);
+            document.dispatchEvent(new Event('zipcode.success'));
+            return;
           }
         });
-      };
+      }
     });
   },
 };
