@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    autocomplete_zipcode (2.0.0)
+    autocomplete_zipcode (2.1.1)
+      rails (>= 3.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -197,7 +198,6 @@ DEPENDENCIES
   autocomplete_zipcode!
   jquery-rails (~> 4.4.0)
   pry (~> 0.14.0)
-  rails (>= 4.2.0)
   rake (~> 13.0.3)
   rspec-rails (~> 5.0.0)
   rubocop (~> 1.12.0)
