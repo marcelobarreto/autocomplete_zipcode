@@ -2,6 +2,7 @@ const AutocompleteZipcode = {
   config: {
     container: 'form',
     stateType: 'select',
+    selectorPrefix: 'data-autocomplete_zipcode_provider',
   },
   inputs: {
     street: 'logradouro',
@@ -12,10 +13,10 @@ const AutocompleteZipcode = {
   },
   mount: (config = AutocompleteZipcode.config) => {
     const { inputs } = AutocompleteZipcode.inputs;
-    const { container, stateType } = config;
+    const { container, stateType, selectorPrefix } = config;
 
     const $container = $(container);
-    const zipCodeInput = $container.find('[data-provider="zipcode"]');
+    const zipCodeInput = $container.find(`["${selectorPrefix}="zipcode"]`);
 
     zipCodeInput.keyup(() => {
       const zipcode = zipCodeInput.val().replace(/[^0-9]/g, '');
@@ -29,7 +30,7 @@ const AutocompleteZipcode = {
           }
 
           for(var key in inputs) {
-            $container.find(`[data-provider="'${key}'"]`).val(response[inputs[key]]);
+            $container.find(`[${selectorPrefix}="'${key}'"]`).val(response[inputs[key]]);
           }
         });
       };

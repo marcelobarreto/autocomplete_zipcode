@@ -1,0 +1,2 @@
+default:
+	./bin/console
