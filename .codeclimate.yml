@@ -7,4 +7,4 @@ plugins:
       file: ".rubocop.yml"
 exclude_patterns:
   - "spec/"
-  - "!spec/support/helpers"
+  - "spec/**/*"
