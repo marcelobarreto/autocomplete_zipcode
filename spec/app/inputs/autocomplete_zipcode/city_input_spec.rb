@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require 'pry'
-require_relative "#{Rails.root}/../../app/inputs/autocomplete_zipcode/city_input"
 
 describe AutocompleteZipcode::CityInput do
-  let(:mock) { OpenStruct.new(text_field: 1) }
+  let(:mock) { {} }
+  before { allow(mock).to receive(:text_field).and_return({ data: { autocomplete_zipcode_provider: :city } }) }
   let(:subject) { described_class.new(mock, nil, nil, nil).input({}) }
 
   describe 'it has autocomplete_zipcode data attributes' do
