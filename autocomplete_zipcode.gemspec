@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'jquery-rails', '~> 4.4.0'
   spec.add_development_dependency 'pry', '~> 0.14.0'
   spec.add_development_dependency 'rake', '~> 13.0.3'
-  spec.add_development_dependency 'rspec', '~> 3.5'
+  spec.add_development_dependency 'rspec-rails', '~> 5.0.0'
   spec.add_development_dependency 'rubocop', '~> 1.12.0'
   spec.add_development_dependency 'simplecov', '~> 0.20.0'
   spec.add_development_dependency 'simple_form', '>= 5.1.0'

@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
 require 'autocomplete_zipcode/version'
+require 'rails'
 
 module AutocompleteZipcode
-  class Engine < ::Rails::Engine; end
+  if defined?(SimpleForm)
+    autoload :ZipcodeInput, 'app/inputs/autocomplete_zipcode/zipcode_input'
+    autoload :StreetInput, 'app/inputs/autocomplete_zipcode/street_input'
+    autoload :NeighborhoodInput, 'app/inputs/autocomplete_zipcode/neighborhood_input'
+    autoload :CityInput, 'app/inputs/autocomplete_zipcode/city_input'
+    autoload :StateInput, 'app/inputs/autocomplete_zipcode/state_input'
+    autoload :StateSelectInput, 'app/inputs/autocomplete_zipcode/state_select_input'
+    autoload :IbgeInput, 'app/inputs/autocomplete_zipcode/ibge_input'
+  end
 end
-
-autoload :ZipcodeInput, "autocomplete_zipcode/simple_form/zipcode_input"
-autoload :StreetInput, "autocomplete_zipcode/simple_form/street_input"
-autoload :NeighborhoodInput, "autocomplete_zipcode/simple_form/neighborhood_input"
-autoload :CityInput, "autocomplete_zipcode/simple_form/city_input"
-autoload :StateInput, "autocomplete_zipcode/simple_form/state_input"
-autoload :StateSelectInput, "autocomplete_zipcode/simple_form/state_select_input"
-autoload :IbgeInput, "autocomplete_zipcode/simple_form/ibge_input"
