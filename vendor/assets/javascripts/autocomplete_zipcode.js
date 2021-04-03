@@ -1,7 +1,6 @@
 const AutocompleteZipcode = {
   config: {
     container: 'form',
-    stateType: 'select',
     selectorPrefix: 'data-autocomplete-zipcode-provider',
     serviceUrl: ({ zipcode }) => `https://viacep.com.br/ws/${zipcode}/json`,
   },
@@ -12,13 +11,13 @@ const AutocompleteZipcode = {
     state: 'uf',
     ibge: 'ibge',
   },
-  mount: (config = AutocompleteZipcode.config) => {
+  mount: ({ onZipcodeSuccess, onZipcodeFail, config = AutocompleteZipcode.config }) => {
     if (typeof jQuery === 'undefined') {
       console.error('jQuery is required by autocomplete_zipcode gem')
       return;
     }
     const { inputs } = AutocompleteZipcode;
-    const { container, stateType, selectorPrefix, serviceUrl } = config;
+    const { container, selectorPrefix, serviceUrl } = config;
 
     const observable = $(container).find(`[${selectorPrefix}="zipcode"]`);
 
@@ -31,15 +30,15 @@ const AutocompleteZipcode = {
       const $container = $el.parents().closest($(container));
       const zipcode = value.replace(/[^0-9]/g, '');
 
-      if(zipcode.length === 8) {
+      if (zipcode.length === 8) {
         $.get(serviceUrl({ zipcode })).then(response => {
           if (response.erro) {
+            onZipcodeFail?.call(this, $container[0], $el[0]);
             document.dispatchEvent(new Event('zipcode.error'));
-            return;
           } else {
             for (var key in inputs) $container.find(`[${selectorPrefix}="${key}"]`).val(response[inputs[key]]);
+            onZipcodeSuccess?.call(this, $container[0], $el[0]);
             document.dispatchEvent(new Event('zipcode.success'));
-            return;
           }
         });
       }

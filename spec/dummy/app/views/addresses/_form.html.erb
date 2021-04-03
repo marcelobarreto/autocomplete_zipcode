@@ -27,7 +27,7 @@
       <%= f.input :street, as: :street %>
       <%= f.input :neighborhood, as: :neighborhood %>
       <%= f.input :city, as: :city %>
-      <%= f.input :state, as: :state %>
+      <%= f.input :state, as: :state_select, collection: states %>
     </div>
 
     <div class="form-actions">

@@ -18,15 +18,20 @@
 
 
 $(document).on('ready', () => {
-  AutocompleteZipcode.mount();
-
-  document.addEventListener('zipcode.success', (e) => {
-    console.log(e);
-    console.log('zipcode was fetched successfully');
+  AutocompleteZipcode.mount({
+    onZipcodeSuccess: (containerEl, zipcodeEl) => {
+      console.log(containerEl, zipcodeEl);
+    },
+    onZipcodeFail: (containerEl, zipcodeEl) => {
+      console.log(containerEl, zipcodeEl);
+    },
   });
 
-  document.addEventListener('zipcode.error', (e) => {
-    console.log(e);
-    console.log('zipcode was fetch failed');
+  document.addEventListener('zipcode.success', () => {
+    console.log('zipcode fetched successfully');
+  });
+
+  document.addEventListener('zipcode.error', () => {
+    console.log('zipcode fetch failed');
   });
 });
