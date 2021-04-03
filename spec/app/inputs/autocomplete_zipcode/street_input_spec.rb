@@ -4,10 +4,11 @@ require 'spec_helper'
 
 describe AutocompleteZipcode::StreetInput do
   let(:mock) { {} }
-  before { allow(mock).to receive(:text_field).and_return({ data: { autocomplete_zipcode_provider: :street } }) }
+  let(:data) { { autocomplete_zipcode_provider: :street } }
+  before { allow(mock).to receive(:text_field).and_return({ data: data }) }
   let(:subject) { described_class.new(mock, nil, nil, nil).input({}) }
 
   describe 'it has autocomplete_zipcode data attributes' do
-    it { expect(subject[:data]).to eq({ autocomplete_zipcode_provider: :street }) }
+    it { expect(subject[:data]).to eq(data) }
   end
 end
