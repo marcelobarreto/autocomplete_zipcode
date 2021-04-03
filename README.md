@@ -2,9 +2,16 @@
 
 This gem was built to "automagically" fills an address form, for Rails version >= 3.1.
 
+## Status
+
+[![Build Status](https://api.travis-ci.com/marcelobarreto/autocomplete_zipcode.svg?branch=master)](https://travis-ci.org/marcelobarreto/autocomplete_zipcode)
+[![Maintainability](https://api.codeclimate.com/v1/badges/37008f3eeaaf2ea47122/maintainability)](https://codeclimate.com/github/marcelobarreto/autocomplete_zipcode/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/37008f3eeaaf2ea47122/test_coverage)](https://codeclimate.com/github/marcelobarreto/autocomplete_zipcode/test_coverage)
+[![RubyGems](http://img.shields.io/gem/dt/autocomplete_zipcode.svg?style=flat)](http://rubygems.org/gems/autocomplete_zipcode)
+
 ## Try it
 
-[HerokuApp](http://autocompletezipcode.herokuapp.com)
+[Online](http://autocompletezipcode.herokuapp.com)
 
 ## Installation
 
@@ -17,20 +24,26 @@ gem 'autocomplete_zipcode'
 And then execute:
 
 ```bash
-$ bundle install
+bundle install
 ```
 
-## Usage
+## Simple Usage
 
 In app/assets/javascripts/application.js, you should add as follows:
 
 ```js
+// app/assets/javascripts/application.js
 //= require ...
 //= require turbolinks
+//= require jquery
 //= require autocomplete_zipcode
+
+$(document).on('ready', () => {
+  AutocompleteZipcode.mount();
+});
 ```
 
-Basic Example:
+## Basic Example
 
 ```erb
 <%= simple_form_for :example do |f| %>
@@ -49,8 +62,8 @@ If you are not using simple_form, then simply add the `data-provider="zipcode"` 
 ```erb
 <%= form_for :example do |f| %>
   ...
-  <%= f.text_field :zipcode, data: {provider: :zipcode} %>
-  <%= f.text_field :street, data: {provider: :street}  %>
+  <%= f.text_field :zipcode, data: { autocomplete_zipcode_provider: :zipcode } %>
+  <%= f.text_field :street, data: { autocomplete_zipcode_provider: :street }  %>
   ...
 <% end %>
 ```
@@ -60,15 +73,46 @@ If you are not using simple_form, then simply add the `data-provider="zipcode"` 
 Simply add an event listener callback to `zipcode.error`, for example:
 
 ```js
-document.addEventListener('zipcode.error', function(e) {
+// app/assets/javascripts/application.js
+
+document.addEventListener('zipcode.error', () => {
   alert('Invalid zipcode!!!')
+});
+```
+
+## Advanced Usage
+
+```js
+// app/assets/javascripts/application.js
+//= require ...
+//= require turbolinks
+//= require jquery
+//= require autocomplete_zipcode
+
+$(document).on('ready', () => {
+  AutocompleteZipcode.mount({
+    onSuccess: (containerEl, zipcodeEl) => {
+      console.log(containerEl, zipcodeEl);
+    },
+    onFail: (containerEl, zipcodeEl) => {
+      console.log(containerEl, zipcodeEl);
+    },
+  });
+
+  document.addEventListener('zipcode.success', () => {
+    console.log('zipcode fetched successfully');
+  });
+
+  document.addEventListener('zipcode.error', () => {
+    console.log('zipcode fetch failed');
+  });
 });
 ```
 
 ## Sample projects
 
-For an example, take a look at [this repository](https://github.com/marcelobarreto/autocomplete_zipcode_example).
-
+For an online example, take a look at [this repository](https://github.com/marcelobarreto/autocomplete_zipcode_example).
+You can also see it working on the dummy application (`spec/dummy`)
 
 ## Contributing
 
