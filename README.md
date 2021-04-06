@@ -7,6 +7,7 @@ This gem was built to "automagically" fills an address form, for Rails version >
 [![Build Status](https://api.travis-ci.com/marcelobarreto/autocomplete_zipcode.svg?branch=master)](https://travis-ci.com/marcelobarreto/autocomplete_zipcode)
 [![Maintainability](https://api.codeclimate.com/v1/badges/37008f3eeaaf2ea47122/maintainability)](https://codeclimate.com/github/marcelobarreto/autocomplete_zipcode/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/37008f3eeaaf2ea47122/test_coverage)](https://codeclimate.com/github/marcelobarreto/autocomplete_zipcode/test_coverage)
+[![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop/rubocop)
 [![RubyGems](http://img.shields.io/gem/dt/autocomplete_zipcode.svg?style=flat)](http://rubygems.org/gems/autocomplete_zipcode)
 
 ## Try it
