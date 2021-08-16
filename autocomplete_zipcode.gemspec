@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry', '~> 0.14.0'
   spec.add_development_dependency 'rake', '~> 13.0.3'
   spec.add_development_dependency 'rspec-rails', '~> 5.0.0'
-  spec.add_development_dependency 'rubocop', '~> 1.14.0'
+  spec.add_development_dependency 'rubocop', '~> 1.19.0'
   spec.add_development_dependency 'simplecov', '~> 0.21.2'
   spec.add_development_dependency 'simple_form', '>= 5.1.0'
   spec.add_development_dependency 'sqlite3', '~> 1.4.2'
