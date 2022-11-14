@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rails', '>= 3.1.0'
 
-  spec.add_development_dependency 'jquery-rails', '~> 4.4.0'
+  spec.add_development_dependency 'jquery-rails', '~> 4.5.1'
   spec.add_development_dependency 'pry', '~> 0.14.0'
   spec.add_development_dependency 'rake', '~> 13.0.3'
   spec.add_development_dependency 'rspec-rails', '~> 5.0.0'
